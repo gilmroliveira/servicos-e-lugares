@@ -1,0 +1,26 @@
+/* Estilos personalizados */
+body {
+  font-family: Arial, sans-serif;
+}
+
+nav ul li a {
+  transition: all 0.3s ease;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}
