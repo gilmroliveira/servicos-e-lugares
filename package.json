@@ -1,0 +1,12 @@
+{
+  "name": "servicos-e-lugares",
+  "version": "1.0.0",
+  "description": "Uma plataforma para encontrar profissionais, serviços e lugares para visitar, com avaliações de usuários. Hospedado no GitHub Pages.",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
