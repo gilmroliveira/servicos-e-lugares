@@ -1,56 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Encontre profissionais, serviços e lugares incríveis com avaliações de usuários.">
   <title>Serviços e Lugares</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/favicon.ico">
   <meta name="theme-color" content="#1d4ed8">
 </head>
 <body class="bg-gray-100">
-  <header class="bg-blue-700 text-white p-4">
-    <nav class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Serviços e Lugares</h1>
-      <ul class="flex space-x-4">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="profissionais.html" class="hover:underline">Profissionais</a></li>
-        <li><a href="servicos.html" class="hover:underline">Serviços</a></li>
-        <li><a href="lugares.html" class="hover:underline">Lugares</a></li>
-        <li><a href="sobre.html" class="hover:underline">Sobre</a></li>
-        <li><a href="contato.html" class="hover:underline">Contato</a></li>
+  <a href="#main-content" class="sr-only focus:not-sr-only bg-blue-700 text-white p-2">Pular para o conteúdo principal</a>
+  <header class="bg-blue-700 text-white p-4" role="banner">
+    <nav class="container mx-auto flex justify-between items-center" aria-label="Navegação principal">
+      <a href="index.html" class="text-2xl font-bold" aria-label="Página inicial">Serviços e Lugares</a>
+      <button class="md:hidden" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-4" id="nav-menu" role="menubar">
+        <li><a href="index.html" class="hover:underline" role="menuitem" aria-current="page">Home</a></li>
+        <li><a href="profissionais.html" class="hover:underline" role="menuitem">Profissionais</a></li>
+        <li><a href="servicos.html" role="menuitem">Serviços</a></li>
+        <li><a href="lugares.html" class="hover:underline" role="menuitem">Lugares</a></li>
+        <li><a href="sobre.html" class="hover:underline" role="menuitem">Sobre</a></li>
+        <li><a href="contato.html" class="hover:underline" role="menuitem">Contato</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container mx-auto py-8">
-    <section class="text-center">
-      <h2 class="text-3xl font-bold mb-4">Encontre Profissionais, Serviços e Lugares</h2>
-      <input type="text" id="search" placeholder="Busque por nome, serviço ou lugar..." class="p-2 w-full max-w-md border rounded">
+  <main class="container mx-auto py-16" id="main-content" role="main">
+    <section class="text-center" aria-labelledby="hero-heading">
+      <h1 id="hero-heading" class="text-3xl font-bold mb-4">Encontre Profissionais, Serviços e Lugares</h1>
+      <form aria-label="Formulário de busca">
+        <label for="search" class="sr-only">Busque por nome, serviço ou lugar</label>
+        <input type="text" id="search" placeholder="Busque por nome, serviço ou lugar..." class="p-2 w-full max-w-md border rounded-lg focus:ring-2 focus:ring-blue-700" aria-describedby="search-help">
+        <span id="search-help" class="sr-only">Digite para buscar profissionais, serviços ou lugares.</span>
+      </form>
     </section>
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-xl font-semibold">Profissionais</h3>
-        <p>Encontre os melhores profissionais da sua região.</p>
-        <a href="profissionais.html" class="text-blue-700 hover:underline">Ver mais</a>
-      </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-xl font-semibold">Serviços</h3>
-        <p>Descubra serviços de qualidade para suas necessidades.</p>
-        <a href="servicos.html" class="text-blue-700 hover:underline">Ver mais</a>
-      </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h3 class="text-xl font-semibold">Lugares</h3>
-        <p>Explore os melhores lugares para visitar.</p>
-        <a href="lugares.html" class="text-blue-700 hover:underline">Ver mais</a>
-      </div>
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8" role="region" aria-label="Categorias principais">
+      <article class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition">
+        <h2 class="text-xl font-semibold">Profissionais</h2>
+        <p class="mt-2">Encontre os melhores profissionais da sua região.</p>
+        <a href="profissionais.html" class="text-blue-700 hover:underline mt-2 inline-block">Ver mais</a>
+      </article>
+      <article class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition">
+        <h2 class="text-xl font-semibold">Serviços</h2>
+        <p class="mt-2">Descubra serviços de qualidade para suas necessidades.</p>
+        <a href="servicos.html" class="text-blue-700 hover:underline mt-2 inline-block">Ver mais</a>
+      </article>
+      <article class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition">
+        <h2 class="text-xl font-semibold">Lugares</h2>
+        <p class="mt-2">Explore os melhores lugares para visitar.</p>
+        <a href="lugares.html" class="text-blue-700 hover:underline mt-2 inline-block">Ver mais</a>
+      </article>
     </section>
   </main>
 
-  <footer class="bg-blue-700 text-white p-4 text-center">
-    <p>&copy; 2025 Serviços e Lugares. Todos os direitos reservados.</p>
+  <footer class="bg-blue-700 text-white p-4 text-center" role="contentinfo">
+    <p>© 2025 Serviços e Lugares. Todos os direitos reservados.</p>
   </footer>
 
   <script src="js/main.js"></script>
