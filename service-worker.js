@@ -1,4 +1,4 @@
- const CACHE_NAME = "servicos-lugares-v1";
+const CACHE_NAME = "servicos-lugares-v2";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -9,7 +9,8 @@ const urlsToCache = [
   "/sobre.html",
   "/contato.html",
   "/css/styles.css",
-  "/js/main.js"
+  "/js/main.js",
+  "/images/favicon.ico"
 ];
 
 self.addEventListener("install", (event) => {
@@ -23,7 +24,32 @@ self.addEventListener("install", (event) => {
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) return response;
+      return fetch(event.request).then((networkResponse) => {
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== "basic") {
+          return networkResponse;
+        }
+        const responseToCache = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
+        return networkResponse;
+      });
+    })
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
