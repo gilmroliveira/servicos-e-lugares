@@ -76,8 +76,7 @@ function loadServices(filters = {}) {
 function loadPlaces(filters = {}) {
   const list = document.getElementById("places-list");
   if (!list) return;
-  list.innerHTML Sexually explicit content warning
-list.innerHTML = "";
+  list.innerHTML = "";
   const filtered = places.filter(place => {
     const matchesCategory = filters.category ? place.category === filters.category : true;
     const matchesLocation = filters.location ? place.location.toLowerCase().includes(filters.location.toLowerCase()) : true;
@@ -137,16 +136,16 @@ function loadDetails() {
   if (reviewForm) {
     const errorDiv = document.createElement("div");
     errorDiv.id = "review-error";
-    errorDiv.className = "text-red-500 hidden";
+    errorDiv.className = "text-red-500 hidden mt-2";
     reviewForm.appendChild(errorDiv);
     reviewForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const rating = document.getElementById("rating").value;
       const comment = document.getElementById("comment").value;
-      errorDiv.className = "text-red-500 hidden";
+      errorDiv.className = "text-red-500 hidden mt-2";
       if (!rating || !comment) {
         errorDiv.textContent = "Por favor, preencha todos os campos.";
-        errorDiv.className = "text-red-500 block";
+        errorDiv.className = "text-red-500 block mt-2";
         return;
       }
       reviews.push({ rating: parseInt(rating), comment });
@@ -165,7 +164,8 @@ function loadDetails() {
 // Função de busca
 function setupSearch() {
   const search = document.getElementById("search");
-  if (search) {
+  const resultsDiv = document.getElementById("search-results");
+  if (search && resultsDiv) {
     search.addEventListener("input", (e) => {
       const term = e.target.value.toLowerCase();
       const results = [
@@ -173,7 +173,15 @@ function setupSearch() {
         ...services.map(s => ({ ...s, type: "service" })),
         ...places.map(l => ({ ...l, type: "place" }))
       ].filter(item => item.name.toLowerCase().includes(term) || item.description.toLowerCase().includes(term));
-      // Futuro: exibir resultados em uma seção de busca
+      resultsDiv.innerHTML = results.length ? results.map(item => `
+        <article class="card shadow-md">
+          <h3 class="text-lg font-semibold">${item.name}</h3>
+          <p>${item.description}</p>
+          <p><strong>${item.type === "professional" ? "Área" : item.type === "service" ? "Categoria" : "Tipo"}:</strong> ${item.category}</p>
+          <p><strong>Local:</strong> ${item.location}</p>
+          <a href="/servicos-e-lugares/detalhe.html?id=${item.id}&type=${item.type}" class="text-blue-700 hover:underline">Ver detalhes</a>
+        </article>
+      `).join("") : "<p>Nenhum resultado encontrado.</p>";
     });
   }
 }
@@ -213,24 +221,38 @@ function setupMenuToggle() {
 function setupContactForm() {
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
-    const errorDiv = document.createElement("div");
-    errorDiv.id = "contact-error";
-    errorDiv.className = "text-red-500 hidden";
-    contactForm.appendChild(errorDiv);
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-      errorDiv.className = "text-red-500 hidden";
-      if (!name || !email || !message) {
-        errorDiv.textContent = "Por favor, preencha todos os campos.";
-        errorDiv.className = "text-red-500 block";
-        return;
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+      const nameError = document.getElementById("name-error");
+      const emailError = document.getElementById("email-error");
+      const messageError = document.getElementById("message-error");
+
+      [nameError, emailError, messageError].forEach(error => error.className = "text-red-500 hidden");
+
+      let hasError = false;
+      if (!name.value) {
+        nameError.textContent = "Nome é obrigatório.";
+        nameError.className = "text-red-500 block";
+        hasError = true;
       }
-      // Simulação de envio
-      alert("Mensagem enviada com sucesso! (Simulação)");
-      contactForm.reset();
+      if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.textContent = "E-mail válido é obrigatório.";
+        emailError.className = "text-red-500 block";
+        hasError = true;
+      }
+      if (!message.value) {
+        messageError.textContent = "Mensagem é obrigatória.";
+        messageError.className = "text-red-500 block";
+        hasError = true;
+      }
+
+      if (!hasError) {
+        alert("Mensagem enviada com sucesso! (Simulação)");
+        contactForm.reset();
+      }
     });
   }
 }
@@ -238,6 +260,7 @@ function setupContactForm() {
 // PWA: Registrar Service Worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/servicos-e-lugares/service-worker.js")
+    .then(() => console.log("Service Worker registrado"))
     .catch(err => console.error("Service Worker registration failed:", err));
 }
 
