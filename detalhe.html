@@ -2,33 +2,40 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="Detalhes e avaliações de profissionais, serviços e lugares.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detalhes e avaliações de profissionais, serviços e lugares.">
+  <meta property="og:title" content="Detalhes - Serviços e Lugares">
+  <meta property="og:description" content="Detalhes e avaliações de profissionais, serviços e lugares.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seu-usuario.github.io/servicos-e-lugares/detalhe.html">
+  <meta property="og:image" content="https://seu-usuario.github.io/servicos-e-lugares/images/logo.png">
   <title>Detalhes - Serviços e Lugares</title>
+  <base href="/servicos-e-lugares/">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="css/styles.css" rel="stylesheet" href="styles.css">
-  <link rel="manifest" href="/manifest.json" />
-  <link href="images/favicon.ico" rel="icon.ico">
-</link>
+  <link href="/servicos-e-lugares/css/styles.css" rel="stylesheet">
+  <link rel="manifest" href="/servicos-e-lugares/manifest.json">
+  <link rel="icon" href="/servicos-e-lugares/images/favicon.ico">
   <meta name="theme-color" content="#1d4ed8">
-</meta></meta>
 </head>
 <body class="bg-gray-100">
-  <a class="sr-only focus:not-sr-only" href="#main-content">Skip to main content</a>
+  <a href="#main-content" class="sr-only focus:not-sr-only bg-blue-700 text-white p-2">Pular para o conteúdo principal</a>
   <header class="bg-blue-700 text-white p-4" role="banner">
-    <nav aria-label="main-nav" class="container mx-auto flex items-center justify-between">
-      <h1 <a class="index.html" href="index.html" class="text-2xl font-bold" role="home-link">Serviços e Lugares</h1>
-      <button aria-controls="nav-menu" aria-expanded="false" class="md:hidden" id="menu-toggle">
-        <svg aria-hidden="true" class="w-6-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24 0 24">
-          <path d="M4 6h16M4 12h16m4 12h16" stroke-linecap="round" stroke="round" stroke-width="2"></path>
+    <nav class="container mx-auto flex justify-between items-center" aria-label="Navegação principal">
+      <a href="/servicos-e-lugares/index.html" class="text-2xl font-bold" aria-label="Página inicial">
+        <img src="/servicos-e-lugares/images/logo.png" alt="Logo Serviços e Lugares" class="h-8 inline">
+      </a>
+      <button class="md:hidden" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
       <ul class="hidden md:flex space-x-4" id="nav-menu" role="menubar">
-        <li><a class="menuitem" href="index.html" class="hover:underline">Home</a></li>
-        <li><a class="menuitem" href="profissionais.html" class="hover:underline">Profissionais</a></li>
-        <li><a class="menuitem" href="servicos.html" class="hover:underline">Serviços</a></li>
-        <li><a class="menuitem" href="lugares.html" class="hover:underline">Lugares</a></li>
-        <li><a class="menuitem" href="sobre.html" class="hover:underline">Sobre</a></li>
-        <li><a class="menuitem" href="contato.html" class="hover:underline">Contato</a></li>
+        <li><a href="/servicos-e-lugares/index.html" class="hover:underline" role="menuitem">Home</a></li>
+        <li><a href="/servicos-e-lugares/profissionais.html" class="hover:underline" role="menuitem">Profissionais</a></li>
+        <li><a href="/servicos-e-lugares/servicos.html" class="hover:underline" role="menuitem">Serviços</a></li>
+        <li><a href="/servicos-e-lugares/lugares.html" class="hover:underline" role="menuitem">Lugares</a></li>
+        <li><a href="/servicos-e-lugares/sobre.html" class="hover:underline" role="menuitem">Sobre</a></li>
+        <li><a href="/servicos-e-lugares/contato.html" class="hover:underline" role="menuitem">Contato</a></li>
       </ul>
     </nav>
   </header>
@@ -44,30 +51,29 @@
     <section aria-labelledby="reviews-heading" class="mt-6">
       <h2 class="text-lg font-semibold mb-2" id="reviews-heading">Avaliações</h2>
       <div aria-live="polite" id="reviews-list"></div>
-      <form aria-label="Enviar avaliação" class="mt-6" id="form" id="review-form">
-        <label class="block" for="rating">Avaliação:</label>
-        <select aria-describedby="rating-help" class="p-2 border rounded" id="rating" required>
+      <form aria-label="Enviar avaliação" class="mt-6" id="review-form">
+        <label for="rating" class="block">Avaliação:</label>
+        <select id="rating" class="p-2 border rounded" aria-describedby="rating-help" required>
+          <option value="">Selecione</option>
           <option value="5">★★★★★</option>
-          <option value="4">★★★☆</option>
+          <option value="4">★★★★</option>
           <option value="3">★★★</option>
           <option value="2">★★</option>
           <option value="1">★</option>
         </select>
-        </select>
-        <span class="sr-only" id="rating-help">Selecione uma pontuação de 1 a 5 estrelas.</span>
-        <label class="block mt-2" for="comment">Comentário:</label>
-        <textarea aria-describedby="comment-help" class="p-2 w-full border rounded" id="comment" required rows="4"></textarea>
-        <span class="sr-only" id="comment-help">Digite seu comentário sobre sua experiência.</span>
-        <button class="bg-blue-600 text-white-2 p-2 rounded mt-2" type="submit">Enviar Avaliação</button>
+        <span id="rating-help" class="sr-only">Selecione uma pontuação de 1 a 5 estrelas.</span>
+        <label for="comment" class="block mt-2">Comentário:</label>
+        <textarea id="comment" class="p-2 w-full border rounded" required rows="4" aria-describedby="comment-help"></textarea>
+        <span id="comment-help" class="sr-only">Digite seu comentário sobre sua experiência.</span>
+        <button type="submit" class="bg-blue-700 text-white p-2 rounded mt-2">Enviar Avaliação</button>
       </form>
-
     </section>
   </main>
 
-  <footer class="bg-blue-700 text-white-4 text-center p-4" role="contentinfo">
+  <footer class="bg-blue-700 text-white p-4 text-center" role="contentinfo">
     <p>© 2025 Serviços e Lugares. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="/js/main.js"></script>
+  <script src="/servicos-e-lugares/js/main.js"></script>
 </body>
 </html>
