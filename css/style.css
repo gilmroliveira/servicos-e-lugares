@@ -1,5 +1,5 @@
 :root {
-  --primary-bg: #007bff;
+  --primary-bg: #1d4ed8;
   --text-contrast: #333;
   --bg-light: #f5f5f5;
 }
@@ -10,12 +10,7 @@ body {
   color: var(--text-contrast);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--primary-bg);
-  outline-offset: 2px;
-}
-
-button:focus-visible {
+a:focus-visible, button:focus-visible {
   outline: 2px solid var(--primary-bg);
   outline-offset: 2px;
 }
@@ -39,7 +34,6 @@ button:focus-visible {
   transform: scale(1.05);
 }
 
-/* Menu hambúrguer */
 #nav-menu.hidden {
   display: none;
 }
@@ -65,7 +59,6 @@ button:focus-visible {
   }
 }
 
-/* Contraste e acessibilidade */
 .bg-blue-700 {
   background-color: var(--primary-bg);
 }
@@ -73,4 +66,11 @@ button:focus-visible {
 input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--primary-bg);
   outline-offset: 2px;
+}
+
+#search-results article {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
 }
