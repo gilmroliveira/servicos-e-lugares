@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com o Serviços e Lugares para dúvidas ou sugestões.">
+  <title>Contato - Serviços e Lugares</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/favicon.ico">
+  <meta name="theme-color" content="#1d4ed8">
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-700 text-white p-4" role="banner">
+    <nav class="container mx-auto flex justify-between items-center" aria-label="Navegação principal">
+      <a href="index.html" class="text-2xl font-bold" aria-label="Página inicial">Serviços e Lugares</a>
+      <button class="md:hidden" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-4" id="nav-menu" role="menubar">
+        <li><a href="index.html" class="hover:underline" role="menuitem">Home</a></li>
+        <li><a href="profissionais.html" class="hover:underline" role="menuitem">Profissionais</a></li>
+        <li><a href="servicos.html" class="hover:underline" role="menuitem">Serviços</a></li>
+        <li><a href="lugares.html" class="hover:underline" role="menuitem">Lugares</a></li>
+        <li><a href="sobre.html" class="hover:underline" role="menuitem">Sobre</a></li>
+        <li><a href="contato.html" class="hover:underline" role="menuitem">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main class="container mx-auto py-8" role="main">
+    <h1 class="text-2xl font-bold mb-4" id="main-heading">Contato</h1>
+    <form id="contact-form" class="bg-white p-4 rounded shadow" aria-label="Formulário de contato">
+      <label for="name" class="block">Nome:</label>
+      <input type="text" id="name" required class="p-2 w-full border rounded" aria-required="true">
+      <label for="email" class="block mt-2">E-mail:</label>
+      <input type="email" id="email" required class="p-2 w-full border rounded" aria-required="true">
+      <label for="message" class="block mt-2">Mensagem:</label>
+      <textarea id="message" required class="p-2 w-full border rounded" rows="5" aria-required="true"></textarea>
+      <button type="submit" class="bg-blue-700 text-white p-2 rounded mt-2">Enviar</button>
+    </form>
+  </main>
+
+  <footer class="bg-blue-700 text-white p-4 text-center" role="contentinfo">
+    <p>© 2025 Serviços e Lugares. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
