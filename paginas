@@ -441,3 +441,60 @@ self.addEventListener("fetch", (event) => {
 - Para testes locais, use um servidor como `npx http-server` ou extensões como Live Server no VS Code.
 
 Se precisar de mais páginas (como `servicos.html`, `lugares.html`, etc.), posso fornecê-las. Também posso ajudar com a implementação de backend ou outras funcionalidades. Quer que eu detalhe alguma parte específica ou adicione mais recursos?
+
+
+### **Imagens**
+Você precisará adicionar as seguintes imagens na pasta `images/`:
+- `favicon.ico`: Ícone do site (16x16 ou 32x32).
+- `icon-192.png`: Ícone PWA (192x192).
+- `icon-512.png`: Ícone PWA (512x512).
+- `logo.png`: Logo do site (ex.: 200x50).
+
+Como placeholder, você pode criar imagens simples usando ferramentas como Canva ou baixar ícones genéricos de sites como Flaticon. Exemplo de `logo.png`:
+- Crie uma imagem com texto "Serviços e Lugares" em fundo branco, tamanho 200x50.
+
+### **Instruções para Subir no GitHub Pages**
+
+1. **Crie o repositório**:
+   - No GitHub, crie um repositório chamado `servicos-e-lugares`.
+2. **Adicione os arquivos**:
+   - Faça upload dos arquivos acima manualmente ou via Git:
+     ```bash
+     git init
+     git add .
+     git commit -m "Implementação completa do site"
+     git remote add origin https://github.com/seu-usuario/servicos-e-lugares.git
+     git push -u origin main
+     ```
+3. **Configure o GitHub Pages**:
+   - Vá para **Settings > Pages**.
+   - Em **Source**, selecione a branch `main` e a pasta `/ (root)`.
+   - Salve e aguarde 5-10 minutos.
+4. **Acesse o site**:
+   - URL: `https://seu-usuario.github.io/servicos-e-lugares/`.
+   - Verifique o Console do DevTools (F12) para erros.
+
+### **Testes Recomendados**
+- **Acessibilidade**: Use Lighthouse (Chrome DevTools) ou WAVE.
+- **Responsividade**: Teste em mobile, tablet e desktop via DevTools.
+- **PWA**: Instale o site no celular (Chrome deve mostrar o ícone de instalação).
+- **Funcionalidades**:
+  - Teste a busca na página inicial.
+  - Aplique filtros em `profissionais.html`, `servicos.html`, `lugares.html`.
+  - Envie avaliações em `detalhe.html`.
+  - Teste o formulário de contato.
+
+### **Se o Site Não Carregar**
+Se a página ainda parece "não existir":
+- **Verifique a aba Actions** no GitHub para erros de deploy.
+- **Teste URLs específicas** (ex.: `https://seu-usuario.github.io/servicos-e-lugares/index.html`).
+- **Confirme os caminhos** no Console do DevTools.
+- **Limpe o cache** do navegador ou use uma aba anônima.
+
+### **Próximos Passos**
+- **Backend**: Use Firebase para avaliações e dados reais.
+- **Imagens otimizadas**: Adicione `srcset` para imagens responsivas.
+- **Autenticação**: Integre login com Google ou e-mail.
+- **Analytics**: Adicione Google Analytics.
+
+Por favor, compartilhe o link do repositório ou detalhes do erro para ajustes específicos. Se quiser funcionalidades adicionais (ex.: mapas, login), posso implementá-las!
