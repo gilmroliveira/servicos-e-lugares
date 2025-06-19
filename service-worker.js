@@ -1,16 +1,19 @@
-const CACHE_NAME = "servicos-lugares-v2";
+const CACHE_NAME = "servicos-lugares-v3";
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/profissionais.html",
-  "/servicos.html",
-  "/lugares.html",
-  "/detalhe.html",
-  "/sobre.html",
-  "/contato.html",
-  "/css/styles.css",
-  "/js/main.js",
-  "/images/favicon.ico"
+  "/servicos-e-lugares/",
+  "/servicos-e-lugares/index.html",
+  "/servicos-e-lugares/profissionais.html",
+  "/servicos-e-lugares/servicos.html",
+  "/servicos-e-lugares/lugares.html",
+  "/servicos-e-lugares/detalhe.html",
+  "/servicos-e-lugares/sobre.html",
+  "/servicos-e-lugares/contato.html",
+  "/servicos-e-lugares/css/styles.css",
+  "/servicos-e-lugares/js/main.js",
+  "/servicos-e-lugares/images/favicon.ico",
+  "/servicos-e-lugares/images/icon-192.png",
+  "/servicos-e-lugares/images/icon-512.png",
+  "/servicos-e-lugares/images/logo.png"
 ];
 
 self.addEventListener("install", (event) => {
