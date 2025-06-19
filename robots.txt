@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seu-usuario.github.io/servicos-e-lugares/sitemap.xml
