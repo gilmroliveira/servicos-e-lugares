@@ -1,54 +1,74 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profissionais</title>
+  <meta name="description" content="Encontre os melhores profissionais com avaliações de usuários.">
+  <meta property="og:title" content="Profissionais - Serviços e Lugares">
+  <meta property="og:description" content="Encontre os melhores profissionais com avaliações de usuários.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seu-usuario.github.io/servicos-e-lugares/profissionais.html">
+  <meta property="og:image" content="https://seu-usuario.github.io/servicos-e-lugares/images/logo.png">
+  <title>Profissionais - Serviços e Lugares</title>
+  <base href="/servicos-e-lugares/">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="manifest" href="manifest.json">
+  <link href="/servicos-e-lugares/css/styles.css" rel="stylesheet">
+  <link rel="manifest" href="/servicos-e-lugares/manifest.json">
+  <link rel="icon" href="/servicos-e-lugares/images/favicon.ico">
+  <meta name="theme-color" content="#1d4ed8">
 </head>
 <body class="bg-gray-100">
-  <!-- Mesma estrutura de header do index.html -->
-  <header class="bg-blue-700 text-white p-4">
-    <nav class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Serviços e Lugares</h1>
-      <ul class="flex space-x-4">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="profissionais.html" class="hover:underline">Profissionais</a></li>
-        <li><a href="servicos.html" class="hover:underline">Serviços</a></li>
-        <li><a href="lugares.html" class="hover:underline">Lugares</a></li>
-        <li><a href="sobre.html" class="hover:underline">Sobre</a></li>
-        <li><a href="contato.html" class="hover:underline">Contato</a></li>
+  <a href="#main-content" class="sr-only focus:not-sr-only bg-blue-700 text-white p-2">Pular para o conteúdo principal</a>
+  <header class="bg-blue-700 text-white p-4" role="banner">
+    <nav class="container mx-auto flex justify-between items-center" aria-label="Navegação principal">
+      <a href="/servicos-e-lugares/index.html" class="text-2xl font-bold" aria-label="Página inicial">
+        <img src="/servicos-e-lugares/images/logo.png" alt="Logo Serviços e Lugares" class="h-8 inline">
+      </a>
+      <button class="md:hidden" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-4" id="nav-menu" role="menubar">
+        <li><a href="/servicos-e-lugares/index.html" class="hover:underline" role="menuitem">Home</a></li>
+        <li><a href="/servicos-e-lugares/profissionais.html" class="hover:underline" role="menuitem" aria-current="page">Profissionais</a></li>
+        <li><a href="/servicos-e-lugares/servicos.html" class="hover:underline" role="menuitem">Serviços</a></li>
+        <li><a href="/servicos-e-lugares/lugares.html" class="hover:underline" role="menuitem">Lugares</a></li>
+        <li><a href="/servicos-e-lugares/sobre.html" class="hover:underline" role="menuitem">Sobre</a></li>
+        <li><a href="/servicos-e-lugares/contato.html" class="hover:underline" role="menuitem">Contato</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container mx-auto py-8">
-    <h2 class="text-2xl font-bold mb-4">Profissionais</h2>
+  <main class="container mx-auto py-8" id="main-content" role="main">
+    <h1 class="text-2xl font-bold mb-4" id="main-heading">Profissionais</h1>
     <div class="flex flex-col md:flex-row gap-4">
-      <aside class="w-full md:w-1/4">
-        <h3 class="text-lg font-semibold">Filtros</h3>
-        <select id="category" class="p-2 w-full border rounded">
-          <option value="">Todas as áreas</option>
-          <option value="medicina">Medicina</option>
-          <option value="tecnologia">Tecnologia</option>
-          <option value="educacao">Educação</option>
-        </select>
-        <input type="text" id="location" placeholder="Localização" class="p-2 w-full border rounded mt-2">
+      <aside class="w-full md:w-1/4" role="complementary">
+        <h2 class="text-lg font-semibold">Filtros</h2>
+        <form aria-label="Filtros de profissionais">
+          <label for="category" class="block">Categoria:</label>
+          <select id="category" class="p-2 w-full border rounded" aria-describedby="category-help">
+            <option value="">Todas as áreas</option>
+            <option value="Medicina">Medicina</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Educação">Educação</option>
+          </select>
+          <span id="category-help" class="sr-only">Selecione uma categoria para filtrar os profissionais.</span>
+          <label for="location" class="block mt-2">Localização:</label>
+          <input type="text" id="location" placeholder="Digite a cidade" class="p-2 w-full border rounded" aria-describedby="location-help">
+          <span id="location-help" class="sr-only">Digite a cidade para filtrar profissionais por localização.</span>
+        </form>
       </aside>
-      <section class="w-full md:w-3/4" id="professionals-list">
+      <section class="w-full md:w-3/4" id="professionals-list" role="region" aria-live="polite">
         <!-- Lista gerada via JavaScript -->
       </section>
     </div>
   </main>
 
-  <!-- Mesma estrutura de footer do index.html -->
-  <footer class="bg-blue-700 text-white p-4 text-center">
-    <p>&copy; 2025 Serviços e Lugares. Todos os direitos reservados.</p>
+  <footer class="bg-blue-700 text-white p-4 text-center" role="contentinfo">
+    <p>© 2025 Serviços e Lugares. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="/servicos-e-lugares/js/main.js"></script>
 </body>
 </html>
